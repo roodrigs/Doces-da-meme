@@ -1,0 +1,335 @@
+.controle-formularios {
+  width: 100%;
+}
+
+.controle-formularios h2 {
+  font-size: 1.75rem;
+  font-weight: 800;
+  margin-bottom: 30px;
+  color: var(--text-main);
+  letter-spacing: -0.02em;
+}
+
+.controls-row {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+}
+
+.search-box {
+  flex: 1;
+  min-width: 280px;
+  position: relative;
+}
+
+.search-icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+}
+
+.search-box input {
+  width: 100%;
+  padding: 14px 14px 14px 44px;
+  border-radius: 14px;
+  border: 2px solid var(--border-color);
+  background: var(--input-bg);
+  color: var(--text-main);
+  font-size: 1rem;
+  transition: all 0.3s;
+}
+
+.search-box input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px rgba(220, 0, 50, 0.1);
+}
+
+.filter-select {
+  padding: 0 16px;
+  border-radius: 14px;
+  border: 2px solid var(--border-color);
+  background: var(--input-bg);
+  font-weight: 600;
+  color: var(--text-main);
+  cursor: pointer;
+  min-width: 200px;
+}
+
+.filter-select option {
+  background: var(--card-bg);
+  color: var(--text-main);
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 40px 0 24px 0;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--border-color);
+}
+
+.section-header h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin: 0;
+}
+
+.grid-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 24px;
+}
+
+/* Enhanced Loan Card */
+.loan-card {
+  background: var(--card-bg);
+  border-radius: 24px;
+  padding: 24px;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.loan-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+  border-color: rgba(220, 0, 50, 0.3);
+}
+
+/* Styles for returned items */
+.loan-card.devolvido {
+  background: var(--table-header-bg);
+  opacity: 0.85;
+  border-style: solid;
+}
+
+.loan-card.devolvido .asset-box {
+  background: var(--card-bg);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.user-badge {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.user-avatar {
+  width: 44px;
+  height: 44px;
+  background: rgba(220, 0, 50, 0.1);
+  color: var(--primary);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.user-info h4 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin: 0;
+}
+
+.user-info .matricula {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.status-pill {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.pill--aberto {
+  background: rgba(220, 0, 50, 0.1);
+  color: #ff4d4d;
+}
+
+.pill--devolvido {
+  background: rgba(34, 197, 94, 0.15);
+  color: #16a34a;
+}
+
+.dark-theme .pill--devolvido {
+  color: #4ade80;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.info-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.section-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.7rem;
+  font-weight: 800;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+}
+
+.asset-box {
+  background: var(--main-bg);
+  padding: 14px;
+  border-radius: 16px;
+  border: 1px solid var(--border-color);
+  transition: background 0.3s;
+}
+
+.asset-main {
+  font-weight: 700;
+  color: var(--text-main);
+  font-size: 1rem;
+  margin-bottom: 4px;
+}
+
+.asset-sub {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.asset-sub .dot {
+  width: 4px;
+  height: 4px;
+  background: var(--border-color);
+  border-radius: 50%;
+}
+
+.asset-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 10px;
+}
+
+.tag {
+  background: var(--border-color);
+  color: var(--text-main);
+  padding: 4px 10px;
+  border-radius: 8px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  border: 1px solid var(--border-color);
+  display: inline-flex;
+  align-items: center;
+}
+
+.dark-theme .tag {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.dates-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.date-box {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.date-content {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  color: var(--text-main);
+  font-size: 0.9rem;
+}
+
+.text-muted { color: var(--text-muted); }
+.text-success { color: #4ade80; }
+.text-warning { color: #facc15; }
+
+.card-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.action-btn {
+  flex: 1;
+  padding: 12px;
+  border-radius: 12px;
+  border: none;
+  font-weight: 700;
+  font-size: 0.85rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.2s;
+}
+
+.btn-secondary {
+  background: var(--border-color);
+  color: var(--text-main);
+  border: 1px solid var(--border-color);
+}
+
+.btn-secondary:hover {
+  background: var(--sidebar-hover);
+  color: var(--sidebar-text-active);
+}
+
+.btn-primary {
+  background: #10b981;
+  color: white;
+}
+
+.btn-primary:hover {
+  background: #059669;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+.empty-state {
+  text-align: center;
+  padding: 60px;
+  background: var(--card-bg);
+  border-radius: 24px;
+  border: 2px dashed var(--border-color);
+  color: var(--text-muted);
+  font-weight: 600;
+}
