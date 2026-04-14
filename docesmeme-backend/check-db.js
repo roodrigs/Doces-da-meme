@@ -2,10 +2,9 @@ const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 
 async function main() {
-  const equipments = await prisma.equipamento.findMany({
-    where: { excluido: false }
-  });
-  console.log(JSON.stringify(equipments, null, 2));
+  const products = await prisma.product.findMany();
+  console.log('--- Products in Database ---');
+  console.log(JSON.stringify(products, null, 2));
 }
 
 main()

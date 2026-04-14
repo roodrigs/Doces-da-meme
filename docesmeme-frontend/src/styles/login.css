@@ -64,7 +64,7 @@
 
 .login-brand-section {
   flex: 1;
-  background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+  background: linear-gradient(135deg, #4c1d95 0%, #1e1b4b 100%);
   padding: 60px;
   display: flex;
   flex-direction: column;
@@ -76,7 +76,7 @@
 }
 
 .dark-theme .login-brand-section {
-  background: linear-gradient(135deg, #0f172a 0%, #020617 100%);
+  background: linear-gradient(135deg, #1e1b4b 0%, #020617 100%);
 }
 
 .brand-content {
@@ -138,7 +138,7 @@
 .icon-circle {
   width: 64px;
   height: 64px;
-  background: rgba(220, 0, 50, 0.1);
+  background: rgba(139, 92, 246, 0.1);
   border-radius: 16px;
   display: flex;
   align-items: center;
@@ -203,7 +203,7 @@
 .input-wrapper input:focus {
   outline: none;
   border-color: var(--primary);
-  box-shadow: 0 0 0 4px rgba(220, 0, 50, 0.1);
+  box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.1);
 }
 
 .form-options {
@@ -247,7 +247,7 @@
 .btn-login-modern:hover {
   background: var(--primary-hover);
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(220, 0, 50, 0.3);
+  box-shadow: 0 8px 20px rgba(139, 92, 246, 0.3);
 }
 
 .form-footer {

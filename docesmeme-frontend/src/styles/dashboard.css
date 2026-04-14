@@ -22,8 +22,8 @@
   display: flex;
   align-items: center;
   gap: 20px;
-  box-shadow: 0 10px 20px rgba(255, 182, 193, 0.1);
-  border: 1px solid #FFF0F5;
+  box-shadow: 0 10px 20px rgba(139, 92, 246, 0.1);
+  border: 1px solid #F5F3FF;
   transition: transform 0.3s ease;
 }
 
@@ -46,13 +46,13 @@
 }
 
 .stat-label {
-  color: #DB7093;
+  color: #7C3AED;
   font-size: 0.9rem;
   font-weight: 500;
 }
 
 .stat-value {
-  color: #4B0082;
+  color: #1E1B4B;
   font-size: 1.8rem;
   font-weight: 800;
 }
@@ -63,12 +63,12 @@
 }
 
 .top-product-pill {
-  box-shadow: 0 4px 10px rgba(255, 182, 193, 0.1);
+  box-shadow: 0 4px 10px rgba(139, 92, 246, 0.1);
   transition: all 0.2s ease;
 }
 
 .top-product-pill:hover {
-  background-color: #FFF0F5 !important;
+  background-color: #F5F3FF !important;
   transform: scale(1.05);
 }
 
@@ -84,12 +84,12 @@
 /* Storefront Animations */
 .product-card-premium:hover {
   transform: translateY(-10px);
-  box-shadow: 0 20px 40px rgba(255, 20, 147, 0.15) !important;
+  box-shadow: 0 20px 40px rgba(139, 92, 246, 0.15) !important;
 }
 
 .cart-btn-large:hover {
   transform: scale(1.05);
-  background-color: #FF1493 !important;
+  background-color: #8B5CF6 !important;
 }
 
 .cart-modal {

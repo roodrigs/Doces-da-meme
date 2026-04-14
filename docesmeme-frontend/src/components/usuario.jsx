@@ -56,7 +56,7 @@ function Usuarios() {
       title: 'Tem certeza?',
       icon: 'warning',
       showCancelButton: true,
-      confirmButtonColor: '#ff1493',
+      confirmButtonColor: '#8B5CF6',
       confirmButtonText: 'Sim, excluir!'
     });
 
@@ -78,9 +78,9 @@ function Usuarios() {
 
   return (
     <div className="usuarios-container">
-      <h2 style={{ color: '#ff1493' }}><Users size={24} /> Gerenciar Acessos</h2>
+      <h2 style={{ color: '#8B5CF6' }}><Users size={24} /> Gerenciar Acessos</h2>
 
-      <form onSubmit={handleCreateOrUpdate} className="usuario-form" style={{ background: 'white', padding: '20px', borderRadius: '15px', border: '1px solid #ffc0cb' }}>
+      <form onSubmit={handleCreateOrUpdate} className="usuario-form" style={{ background: 'white', padding: '20px', borderRadius: '15px', border: '1px solid #DDD6FE' }}>
         <div className="form-group">
           <label>Nome</label>
           <input
@@ -113,14 +113,14 @@ function Usuarios() {
           <select 
             value={novoUsuario.role} 
             onChange={(e) => setNovoUsuario({ ...novoUsuario, role: e.target.value })}
-            style={{ width: '100%', padding: '10px', borderRadius: '8px', border: '1px solid #ffc0cb' }}
+            style={{ width: '100%', padding: '10px', borderRadius: '8px', border: '1px solid #DDD6FE' }}
           >
             <option value="CLIENT">Cliente</option>
             <option value="SELLER">Vendedor (Admin)</option>
           </select>
         </div>
         <div className="buttons">
-          <button type="submit" className="btn-submit" style={{ backgroundColor: '#ff1493' }}>
+          <button type="submit" className="btn-submit" style={{ backgroundColor: '#8B5CF6' }}>
             {editingId ? 'Atualizar' : 'Criar'}
           </button>
         </div>
@@ -129,7 +129,7 @@ function Usuarios() {
       <div className="table-responsive" style={{ marginTop: '30px' }}>
         <table className="usuarios-table">
           <thead>
-            <tr style={{ backgroundColor: '#ffe4e1' }}>
+            <tr style={{ backgroundColor: '#EDE9FE' }}>
               <th>Nome</th>
               <th>Email</th>
               <th>Função</th>
@@ -146,8 +146,8 @@ function Usuarios() {
                     padding: '4px 10px', 
                     borderRadius: '20px', 
                     fontSize: '0.8rem',
-                    backgroundColor: user.role === 'SELLER' ? '#ff1493' : '#fff0f5',
-                    color: user.role === 'SELLER' ? 'white' : '#db7093'
+                    backgroundColor: user.role === 'SELLER' ? '#8B5CF6' : '#F5F3FF',
+                    color: user.role === 'SELLER' ? 'white' : '#7C3AED'
                   }}>
                     {user.role === 'SELLER' ? 'Vendedor' : 'Cliente'}
                   </span>
@@ -164,5 +164,6 @@ function Usuarios() {
     </div>
   );
 }
+
 
 export default Usuarios;

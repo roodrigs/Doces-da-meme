@@ -1,32 +1,32 @@
 :root {
-  /* Brownie da Meme - Pink Theme */
-  --sidebar-bg: #ff69b4; /* Hot Pink */
-  --sidebar-hover: #ff1493; /* Deep Pink */
-  --sidebar-active: #c71585; /* Medium Violet Red */
+  /* Brownie da Meme - Lilac Theme */
+  --sidebar-bg: #8b5cf6; /* Vivid Violet */
+  --sidebar-hover: #7c3aed; /* Deep Violet */
+  --sidebar-active: #6d28d9; /* Strong Purple */
   --sidebar-text: #ffffff;
   --sidebar-text-active: #ffffff;
-  --main-bg: #fff0f5; /* Lavender Blush */
+  --main-bg: #f5f3ff; /* Ghost White/Violet */
   --card-bg: #ffffff;
-  --primary: #ff1493;
-  --primary-hover: #db7093;
-  --text-main: #4b0082; /* Indigo for better readability on pink */
-  --text-muted: #8b008b;
-  --border-color: #ffc0cb; /* Pink */
+  --primary: #8b5cf6;
+  --primary-hover: #7c3aed;
+  --text-main: #1e1b4b; /* Dark Indigo */
+  --text-muted: #4c1d95; /* Deep Purple */
+  --border-color: #ddd6fe; /* Soft Lavender */
   --input-bg: #ffffff;
-  --table-header-bg: #ffe4e1; /* Misty Rose */
+  --table-header-bg: #ede9fe; /* Lavender Web */
 }
 
 .dark-theme {
-  /* Dark Pink Theme */
-  --main-bg: #2d001a;
-  --card-bg: #4d002b;
-  --text-main: #ffb6c1;
-  --text-muted: #db7093;
-  --border-color: #7a0045;
-  --input-bg: #2d001a;
-  --table-header-bg: #4d002b;
-  --sidebar-bg: #1a000f;
-  --sidebar-hover: #4d002b;
+  /* Dark Lilac Theme */
+  --main-bg: #1e1b4b;
+  --card-bg: #2e1065;
+  --text-main: #ddd6fe;
+  --text-muted: #a78bfa;
+  --border-color: #4c1d95;
+  --input-bg: #1e1b4b;
+  --table-header-bg: #2e1065;
+  --sidebar-bg: #0f172a;
+  --sidebar-hover: #1e1b4b;
 }
 
 * {
@@ -160,6 +160,7 @@ body {
   display: flex;
   flex-direction: column;
   background-color: var(--main-bg);
+  transition: all 0.3s ease;
 }
 
 /* Common Table Styling */
@@ -170,6 +171,7 @@ body {
   border-radius: 12px;
   border: 1px solid var(--border-color);
   background: var(--card-bg);
+  -webkit-overflow-scrolling: touch; /* Smooth scroll on iOS */
 }
 
 .usuarios-table {
@@ -177,6 +179,7 @@ body {
   border-collapse: collapse;
   background: var(--card-bg);
   color: var(--text-main);
+  min-width: 600px; /* Force scroll on very small screens instead of squishing */
 }
 
 .usuarios-table th {
@@ -185,38 +188,82 @@ body {
   padding: 16px;
   text-align: left;
   border-bottom: 2px solid var(--border-color);
+  font-size: 0.9rem;
 }
 
 .usuarios-table td {
   padding: 16px;
   border-bottom: 1px solid var(--border-color);
+  font-size: 0.9rem;
 }
 
 /* Mobile Toggle */
 .mobile-toggle {
   display: none;
   position: fixed;
-  top: 16px;
-  right: 16px;
+  top: 15px;
+  left: 15px; /* Moved to left for better accessibility */
   z-index: 2000;
   background: var(--primary);
   color: white;
   border: none;
-  padding: 10px;
-  border-radius: 10px;
+  width: 45px;
+  height: 45px;
+  border-radius: 12px;
   cursor: pointer;
+  box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
+  align-items: center;
+  justify-content: center;
 }
 
 @media (max-width: 1024px) {
+  body {
+    overflow: auto; /* Allow body scroll if needed on mobile */
+  }
+
   .sidebar {
     position: fixed;
     left: -220px;
+    box-shadow: 10px 0 30px rgba(0, 0, 0, 0.2);
   }
+  
   .sidebar.open {
     left: 0;
   }
+  
   .mobile-toggle {
+    display: flex;
+  }
+
+  .content-area {
+    padding: 80px 15px 20px 15px; /* More space for the mobile toggle */
+    width: 100%;
+  }
+
+  /* Overlay when sidebar is open */
+  .sidebar-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 999;
+    display: none;
+  }
+
+  .sidebar.open + .sidebar-overlay {
     display: block;
+  }
+}
+
+@media (max-width: 480px) {
+  .content-area {
+    padding: 75px 10px 20px 10px;
+  }
+  
+  .nav-item {
+    padding: 12px 15px;
   }
 }
 

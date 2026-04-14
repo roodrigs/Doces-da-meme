@@ -25,7 +25,7 @@ import {
 import '../styles/dashboard.css';
 
 const BASE_URL = import.meta.env.VITE_BACKEND_URL;
-const COLORS = ['#FF1493', '#FF69B4', '#DB7093', '#C71585', '#FFB6C1'];
+const COLORS = ['#8B5CF6', '#A78BFA', '#7C3AED', '#6D28D9', '#C4B5FD'];
 
 function Dashboard() {
   const [stats, setStats] = useState(null);
@@ -51,71 +51,80 @@ function Dashboard() {
     }
   };
 
-  if (loading) return <div className="loading" style={{ color: '#FF1493' }}>Calculando faturamento...</div>;
+  if (loading) return <div className="loading" style={{ color: '#8B5CF6' }}>Calculando faturamento...</div>;
 
   return (
-    <div className="dashboard-container">
-      <header className="dashboard-header">
-        <h2 style={{ fontFamily: 'cursive', color: '#FF1493', fontSize: '2rem' }}>
-          <LayoutDashboard style={{ verticalAlign: 'middle', marginRight: '10px' }} />
-          Painel de Vendas - Brownie da Meme
+    <div className="dashboard-container" style={{ padding: 'clamp(10px, 4vw, 20px)' }}>
+      <header className="dashboard-header" style={{ marginBottom: '30px' }}>
+        <h2 style={{ fontFamily: 'cursive', color: '#8B5CF6', fontSize: 'clamp(1.5rem, 6vw, 2rem)', display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: '10px' }}>
+          <LayoutDashboard size={window.innerWidth < 480 ? 24 : 32} />
+          <span>Painel de Vendas</span>
         </h2>
-        <p style={{ color: '#DB7093' }}>Acompanhe o crescimento das suas doçuras!</p>
+        <p style={{ color: '#7C3AED', fontSize: 'clamp(0.9rem, 4vw, 1rem)' }}>Acompanhe o crescimento das suas doçuras!</p>
       </header>
 
-      <div className="stats-grid">
+      <div className="stats-grid" style={{ 
+        display: 'grid', 
+        gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', 
+        gap: '20px' 
+      }}>
         <div className="stat-card revenue">
-          <div className="stat-icon" style={{ backgroundColor: '#FF1493' }}><DollarSign color="white" /></div>
+          <div className="stat-icon" style={{ backgroundColor: '#8B5CF6' }}><DollarSign color="white" /></div>
           <div className="stat-info">
             <span className="stat-label">Faturamento Total</span>
-            <span className="stat-value">R$ {stats?.totalRevenue?.toFixed(2)}</span>
+            <span className="stat-value" style={{ fontSize: 'clamp(1.5rem, 5vw, 1.8rem)' }}>R$ {stats?.totalRevenue?.toFixed(2)}</span>
           </div>
         </div>
 
         <div className="stat-card orders">
-          <div className="stat-icon" style={{ backgroundColor: '#FF69B4' }}><ShoppingBag color="white" /></div>
+          <div className="stat-icon" style={{ backgroundColor: '#A78BFA' }}><ShoppingBag color="white" /></div>
           <div className="stat-info">
             <span className="stat-label">Total de Pedidos</span>
-            <span className="stat-value">{stats?.totalOrders}</span>
+            <span className="stat-value" style={{ fontSize: 'clamp(1.5rem, 5vw, 1.8rem)' }}>{stats?.totalOrders}</span>
           </div>
         </div>
 
         <div className="stat-card items">
-          <div className="stat-icon" style={{ backgroundColor: '#C71585' }}><Package color="white" /></div>
+          <div className="stat-icon" style={{ backgroundColor: '#6D28D9' }}><Package color="white" /></div>
           <div className="stat-info">
-            <span className="stat-label">Produtos Cadastrados</span>
-            <span className="stat-value">{stats?.productsCount}</span>
+            <span className="stat-label">Produtos</span>
+            <span className="stat-value" style={{ fontSize: 'clamp(1.5rem, 5vw, 1.8rem)' }}>{stats?.productsCount}</span>
           </div>
         </div>
       </div>
 
-      <div className="charts-section" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', gap: '20px', marginTop: '30px' }}>
-        <div className="chart-card" style={{ background: 'white', padding: '20px', borderRadius: '15px', boxShadow: '0 4px 15px rgba(255,182,193,0.1)' }}>
-          <h3 style={{ color: '#C71585', marginBottom: '20px' }}><TrendingUp size={18} /> Histórico de Receita (30 dias)</h3>
-          <div style={{ height: '300px' }}>
+      <div className="charts-section" style={{ 
+        display: 'grid', 
+        gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 350px), 1fr))', 
+        gap: '20px', 
+        marginTop: '30px' 
+      }}>
+        <div className="chart-card" style={{ background: 'white', padding: '20px', borderRadius: '15px', boxShadow: '0 4px 15px rgba(139, 92, 246, 0.1)', overflow: 'hidden' }}>
+          <h3 style={{ color: '#6D28D9', marginBottom: '20px', fontSize: '1.1rem' }}><TrendingUp size={18} /> Receita (30 dias)</h3>
+          <div style={{ height: '250px', width: '100%' }}>
             <ResponsiveContainer width="100%" height="100%">
               <LineChart data={history}>
-                <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#FFF0F5" />
+                <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#F5F3FF" />
                 <XAxis dataKey="date" hide />
-                <YAxis />
+                <YAxis width={40} fontSize={12} />
                 <Tooltip />
-                <Line type="monotone" dataKey="revenue" stroke="#FF1493" strokeWidth={3} dot={{ fill: '#FF1493' }} />
+                <Line type="monotone" dataKey="revenue" stroke="#8B5CF6" strokeWidth={3} dot={{ fill: '#8B5CF6', r: 4 }} />
               </LineChart>
             </ResponsiveContainer>
           </div>
         </div>
 
-        <div className="chart-card" style={{ background: 'white', padding: '20px', borderRadius: '15px', boxShadow: '0 4px 15px rgba(255,182,193,0.1)' }}>
-          <h3 style={{ color: '#C71585', marginBottom: '20px' }}>Mais Vendidos</h3>
-          <div style={{ height: '300px' }}>
+        <div className="chart-card" style={{ background: 'white', padding: '20px', borderRadius: '15px', boxShadow: '0 4px 15px rgba(139, 92, 246, 0.1)', overflow: 'hidden' }}>
+          <h3 style={{ color: '#6D28D9', marginBottom: '20px', fontSize: '1.1rem' }}>Mais Vendidos</h3>
+          <div style={{ height: '250px', width: '100%' }}>
             <ResponsiveContainer width="100%" height="100%">
               <PieChart>
                 <Pie
                   data={stats?.topProducts}
                   cx="50%"
                   cy="50%"
-                  innerRadius={60}
-                  outerRadius={80}
+                  innerRadius={window.innerWidth < 480 ? 40 : 60}
+                  outerRadius={window.innerWidth < 480 ? 60 : 80}
                   paddingAngle={5}
                   dataKey="totalSold"
                 >
@@ -124,7 +133,7 @@ function Dashboard() {
                   ))}
                 </Pie>
                 <Tooltip />
-                <Legend />
+                <Legend wrapperStyle={{ fontSize: '12px' }} />
               </PieChart>
             </ResponsiveContainer>
           </div>
@@ -132,21 +141,23 @@ function Dashboard() {
       </div>
 
       <div className="recent-activity" style={{ marginTop: '30px' }}>
-        <h3 style={{ color: '#C71585', marginBottom: '15px' }}>Top Brownies</h3>
-        <div className="top-products-list" style={{ display: 'flex', flexWrap: 'wrap', gap: '15px' }}>
+        <h3 style={{ color: '#6D28D9', marginBottom: '15px', fontSize: '1.2rem' }}>Top Brownies</h3>
+        <div className="top-products-list" style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
           {stats?.topProducts?.map((p, i) => (
             <div key={i} className="top-product-pill" style={{ 
               background: 'white', 
-              padding: '10px 20px', 
+              padding: '8px 16px', 
               borderRadius: '30px', 
-              border: '1px solid #FFC0CB',
+              border: '1px solid #DDD6FE',
               display: 'flex',
               alignItems: 'center',
-              gap: '10px'
+              gap: '8px',
+              fontSize: '0.9rem',
+              flex: window.innerWidth < 480 ? '1 1 100%' : 'none'
             }}>
-              <span style={{ fontWeight: 'bold', color: '#FF1493' }}>#{i+1}</span>
-              <span style={{ color: '#4B0082' }}>{p.name}</span>
-              <span style={{ color: '#DB7093', fontSize: '0.8rem' }}>({p.totalSold} vendas)</span>
+              <span style={{ fontWeight: 'bold', color: '#8B5CF6' }}>#{i+1}</span>
+              <span style={{ color: '#1E1B4B', fontWeight: '500' }}>{p.name}</span>
+              <span style={{ color: '#7C3AED', fontSize: '0.8rem' }}>({p.totalSold} vendidos)</span>
             </div>
           ))}
         </div>
@@ -154,5 +165,6 @@ function Dashboard() {
     </div>
   );
 }
+
 
 export default Dashboard;

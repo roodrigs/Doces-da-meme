@@ -13,16 +13,17 @@ export class AuthService {
     const trimmedEmail = email?.trim()?.toLowerCase();
     const trimmedPassword = password?.trim();
     
-    // Admin hardcoded if needed for first access
-    if (trimmedEmail === 'admin@browniedameme.com' && trimmedPassword === 'admin') {
-      return { id: 0, name: 'Meme', email: 'admin@browniedameme.com', role: 'SELLER' };
-    }
-
+    // 1. Try to find in database first
     const user = await this.userService.findByEmail(trimmedEmail);
 
     if (user && user.password === trimmedPassword) {
       const { password, ...rest } = user;
       return rest;
+    }
+
+    // 2. Admin hardcoded fallback if not found in DB
+    if (trimmedEmail === 'admin@browniedameme.com' && trimmedPassword === 'admin') {
+      return { id: 0, name: 'Meme (Admin)', email: 'admin@browniedameme.com', role: 'SELLER' };
     }
 
     return null;
